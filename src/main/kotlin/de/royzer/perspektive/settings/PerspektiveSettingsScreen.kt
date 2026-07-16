@@ -19,7 +19,7 @@ class PerspektiveSettingsScreen(
                     .append(if (PerspektiveSettings.shouldReturnToFirstPerson) CommonComponents.OPTION_ON else CommonComponents.OPTION_OFF)
             ) {
                 PerspektiveSettings.shouldReturnToFirstPerson = !PerspektiveSettings.shouldReturnToFirstPerson
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 - 185, this.height / 6 + 4 - 6)
                 .size(250, 20)
@@ -28,7 +28,7 @@ class PerspektiveSettingsScreen(
         addRenderableWidget(
             Button.builder(Component.nullToEmpty("Reset")) {
                 PerspektiveSettings.shouldReturnToFirstPerson = false
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 + 85, this.height / 6 + 4 - 6)
                 .size(100, 20)
@@ -37,7 +37,7 @@ class PerspektiveSettingsScreen(
         // camera distance
         addRenderableWidget(
             CameraDistanceOption.cameraDistanceOption.createButton(
-                this.minecraft!!.options,
+                this.minecraft.options,
                 width / 2 - 185,
                 height / 6 + 28,
                 250
@@ -47,7 +47,7 @@ class PerspektiveSettingsScreen(
             Button.builder(Component.nullToEmpty("Reset")) {
                 PerspektiveSettings.cameraDistance = 0.0
                 CameraDistanceOption.cameraDistanceOption.set(0)
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 + 85, this.height / 6 + 28)
                 .size(100, 20)
@@ -60,7 +60,7 @@ class PerspektiveSettingsScreen(
                     .append(if (PerspektiveSettings.scrollingEnabled) CommonComponents.OPTION_ON else CommonComponents.OPTION_OFF)
             ) {
                 PerspektiveSettings.scrollingEnabled = !PerspektiveSettings.scrollingEnabled
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 - 185, this.height / 6 + 58)
                 .size(250, 20)
@@ -69,7 +69,7 @@ class PerspektiveSettingsScreen(
         addRenderableWidget(
             Button.builder(Component.nullToEmpty("Reset")) {
                 PerspektiveSettings.scrollingEnabled = true
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 + 85, this.height / 6 + 58)
                 .size(100, 20)
@@ -82,7 +82,7 @@ class PerspektiveSettingsScreen(
                     .append(if (PerspektiveSettings.blockInventoryScrolling) CommonComponents.OPTION_ON else CommonComponents.OPTION_OFF)
             ) {
                 PerspektiveSettings.blockInventoryScrolling = !PerspektiveSettings.blockInventoryScrolling
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 - 185, this.height / 6 + 88)
                 .tooltip(Tooltip.create(Component.translatable("perspektive.tooltips.blockScrolling")))
@@ -92,7 +92,7 @@ class PerspektiveSettingsScreen(
         addRenderableWidget(
             Button.builder(Component.nullToEmpty("Reset")) {
                 PerspektiveSettings.blockInventoryScrolling = true
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 + 85, this.height / 6 + 88)
                 .size(100, 20)
@@ -106,7 +106,7 @@ class PerspektiveSettingsScreen(
                     .append(if (PerspektiveSettings.cameraDistanceAlsoIn3rdPerson) CommonComponents.OPTION_ON else CommonComponents.OPTION_OFF)
             ) {
                 PerspektiveSettings.cameraDistanceAlsoIn3rdPerson = !PerspektiveSettings.cameraDistanceAlsoIn3rdPerson
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 - 185, this.height / 6 + 118)
                 .size(250, 20)
@@ -116,7 +116,7 @@ class PerspektiveSettingsScreen(
         addRenderableWidget(
             Button.builder(Component.nullToEmpty("Reset")) {
                 PerspektiveSettings.cameraDistanceAlsoIn3rdPerson = false
-                this.minecraft?.setScreen(this)
+                this.minecraft.setScreenAndShow(this)
             }
                 .pos(this.width / 2 + 85, this.height / 6 + 118)
                 .size(100, 20)
@@ -135,7 +135,7 @@ class PerspektiveSettingsScreen(
 
     override fun onClose() {
         saveConfig()
-        this.minecraft?.setScreen(lastScreen)
+        this.minecraft.setScreenAndShow(lastScreen)
     }
 
 }
